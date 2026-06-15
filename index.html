@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Gauja 91k">
 <meta name="theme-color" content="#fc4c02">
-<title>Gauja 91k Plan</title>
+<title>Gauja 91k Plan — v4</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23fc4c02'/><path d='M30 130 L60 70 L90 100 L120 50 L150 130 Z' fill='%23fff'/><text x='90' y='160' font-family='-apple-system,sans-serif' font-size='28' font-weight='800' text-anchor='middle' fill='%23fff'>91k</text></svg>">
 <style>
   :root {
@@ -22,6 +22,20 @@
     --green: #16a34a;
     --amber: #d97706;
     --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --card: #1c1c1e;
+      --text: #f5f5f7;
+      --muted: #98989d;
+      --accent-bg: #2a1a10;
+      --border: #2c2c2e;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .today-card { background: linear-gradient(135deg, #2a1a10 0%, #1c1c1e 100%) !important; }
+    .week-list details { background: #161618 !important; }
+    .week-meta span, .rule, .note-warn { background: #161618 !important; }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html { font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -205,7 +219,7 @@
     font-size: 14px;
   }
   .pill-row:last-child { border-bottom: none; }
-  .pill-row .val { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .pill-row .val { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; text-align: right; }
   /* Section heading inside details */
   .sub-h {
     font-size: 11px;
@@ -259,7 +273,7 @@
 
 <div class="hero">
   <h1>Gauja 91&nbsp;km</h1>
-  <div class="race-date">Saturday, August 1, 2026 · Goal 12–13 h</div>
+  <div class="race-date">Saturday, August 1, 2026 · Goal 12–14 h · finish-first</div>
   <div class="countdown">
     <span class="countdown-num" id="countdownNum">—</span>
     <span class="countdown-label">days to race</span>
@@ -279,14 +293,35 @@
 </div>
 
 <details>
-  <summary>All weeks (W24 → race)</summary>
+  <summary>All weeks (Build 1 → race)</summary>
   <div class="content week-list" id="weekListContainer"></div>
 </details>
 
 <details>
-  <summary>Strength A · Mondays · 35 min</summary>
+  <summary>Goal + how it's calibrated</summary>
   <div class="content">
-    <p class="note">Posterior chain + single leg. Keep loading moderate; this complements running, doesn't compete with it.</p>
+    <div class="note-warn">First race at ultra distance. UTMB index almost always drops a notch as distance rises — so 550–600 is the optimistic upper band if everything clicks, and landing a touch below it is still a fully successful first 91 k.</div>
+    <div class="rule"><strong>Real KPI:</strong> finish healthy and in control in 12–14 h. The index is an <em>outcome</em> of pacing well, not a target to chase from the gun.</div>
+    <div class="rule"><strong>Two risks, ranked:</strong> (1) quads blowing up on descents around 50–60 k; (2) GI failure from under-rehearsed fuelling in heat. Everything here serves one of those, plus not re-triggering the fatigue/LEA substrate.</div>
+  </div>
+</details>
+
+<details>
+  <summary>Zones + intensity</summary>
+  <div class="content">
+    <p class="note">~85% easy / 15% quality. Easy means easy — if HR creeps above ~148 at easy pace, slow down.</p>
+    <div class="pill-row"><span>Endurance (Z2)</span><span class="val">4:12–5:03/km · HR ≤148</span></div>
+    <div class="pill-row"><span>Threshold (sub-T)</span><span class="val">3:36–3:54/km · HR 155–167</span></div>
+    <div class="pill-row"><span>Speed (strides only)</span><span class="val">3:19–3:35/km</span></div>
+    <div class="sub-h">Weekly volume ceiling (not a target)</div>
+    <div class="rule">Ramp: <strong>8 → 9.5 → 10 → 11 (recce) → 7 → 6 → race</strong>. Tissue adaptation rate caps the build, not the hours available. Borderline readiness → hit the lower end.</div>
+  </div>
+</details>
+
+<details>
+  <summary>Strength A · Wednesdays · 35 min</summary>
+  <div class="content">
+    <p class="note">Heavy posterior chain + single leg. <strong>Placed on Wednesday</strong> so the eccentric load lands clear of Saturday descent DOMS (peaks Sun–Mon) and ~3 days before the next descent.</p>
     <ul class="exercise-list">
       <li><span class="exercise-name">Romanian deadlift</span> <span class="exercise-detail">3 × 6–8 reps, moderate load</span></li>
       <li><span class="exercise-name">Bulgarian split squat</span> <span class="exercise-detail">3 × 8 each side</span></li>
@@ -295,27 +330,28 @@
       <li><span class="exercise-name">Plank + side plank</span> <span class="exercise-detail">3 × 30–45 s</span></li>
       <li><span class="exercise-name">Tibialis raises</span> <span class="exercise-detail">3 × 15 each side · anterior tib for downhills</span></li>
     </ul>
+    <p class="note">From Build 4: maintenance load only (lighter).</p>
   </div>
 </details>
 
 <details>
-  <summary>Strength B · Fridays · 30 min</summary>
+  <summary>Strength B · Thursdays · 25–30 min</summary>
   <div class="content">
-    <p class="note">Durability + eccentric isometrics. <strong>No Nordics</strong> — cramping was neuromuscular fatigue + sodium, not hamstring weakness.</p>
+    <p class="note">Durability + eccentric isometrics, lighter session. <strong>No Nordics</strong> — cramping was neuromuscular fatigue + sodium, not hamstring weakness. Friday is deliberately lift-free so legs are fresh for the Saturday descent.</p>
     <ul class="exercise-list">
       <li><span class="exercise-name">Copenhagen adductor</span> <span class="exercise-detail">2 × 6 each side · top leg supported</span></li>
-      <li><span class="exercise-name">Single-leg RDL (slow eccentric)</span> <span class="exercise-detail">3 × 6 each side · 3-sec lower</span></li>
+      <li><span class="exercise-name">Single-leg RDL (slow eccentric, light)</span> <span class="exercise-detail">3 × 6 each side · 3-sec lower</span></li>
       <li><span class="exercise-name">Loaded step-ups</span> <span class="exercise-detail">3 × 8 each side</span></li>
       <li><span class="exercise-name">Goblet squat</span> <span class="exercise-detail">3 × 8</span></li>
       <li><span class="exercise-name">Pallof press</span> <span class="exercise-detail">3 × 10 each side</span></li>
       <li><span class="exercise-name">Hanging knee raise OR dead bug</span> <span class="exercise-detail">3 × 10</span></li>
     </ul>
-    <p class="note">From W27: drop to maintenance only (Copenhagen + single-leg RDL + step-ups, 2 sets each). From W30: drop Copenhagens entirely.</p>
+    <p class="note">From Build 4: maintenance only (Copenhagen + single-leg RDL + step-ups, 2 sets). From Build 6: drop Copenhagens and all heavy eccentric.</p>
   </div>
 </details>
 
 <details>
-  <summary>Daily micro-block · 5 min · 3× per week</summary>
+  <summary>Daily micro-block · 5 min · 3× per week (Mon/Wed/Sat)</summary>
   <div class="content">
     <ul class="exercise-list">
       <li><span class="exercise-name">Single-leg eccentric calf raises</span> <span class="exercise-detail">2 × 12 each side · slow lower off step</span></li>
@@ -329,15 +365,15 @@
 <details>
   <summary>Nutrition — daily targets</summary>
   <div class="content">
-    <div class="sub-h">Daily floor (70 kg, training days)</div>
-    <div class="pill-row"><span>Energy</span><span class="val">≥3800 kcal</span></div>
-    <div class="pill-row"><span>Carbohydrate</span><span class="val">7–9 g/kg (500–630 g)</span></div>
-    <div class="pill-row"><span>Protein</span><span class="val">1.6–2.0 g/kg (115–140 g)</span></div>
-    <div class="pill-row"><span>Long-run days</span><span class="val">+400 kcal, 9–10 g/kg carbs</span></div>
+    <div class="sub-h">Daily floor (63 kg, training days)</div>
+    <div class="pill-row"><span>Energy</span><span class="val">≥3400 kcal</span></div>
+    <div class="pill-row"><span>Carbohydrate</span><span class="val">7–9 g/kg (440–570 g)</span></div>
+    <div class="pill-row"><span>Protein</span><span class="val">1.6–2.0 g/kg (100–125 g)</span></div>
+    <div class="pill-row"><span>Long-run days</span><span class="val">~3800 kcal, 9–10 g/kg carbs</span></div>
 
     <div class="sub-h">Monitoring</div>
     <div class="rule">Weigh fasted morning <strong>2× per week</strong> (Mon + Fri). Drop &gt;1.5 kg vs baseline → mandatory energy review.</div>
-    <div class="rule">Retest <strong>SHBG at W30</strong> to confirm LEA correction (was 80/83 vs ≤54).</div>
+    <div class="rule">Retest <strong>SHBG at Build 6</strong> to confirm LEA correction (was 80/83).</div>
 
     <div class="sub-h">Pre-long-run</div>
     <div class="pill-row"><span>Night before</span><span class="val">8 g/kg carbs across day</span></div>
@@ -345,21 +381,21 @@
     <div class="pill-row"><span>30 min pre</span><span class="val">30–60 g carbs</span></div>
 
     <div class="sub-h">Post-training (within 60 min)</div>
-    <div class="pill-row"><span>Carbs</span><span class="val">1.0 g/kg (70 g)</span></div>
+    <div class="pill-row"><span>Carbs</span><span class="val">1.0 g/kg (63 g)</span></div>
     <div class="pill-row"><span>Protein</span><span class="val">0.3 g/kg (20 g)</span></div>
   </div>
 </details>
 
 <details>
-  <summary>Intra-training fuel · GI ladder</summary>
+  <summary>Intra-training fuel · GI ladder (capped 70–80 g/h)</summary>
   <div class="content">
-    <p class="note">Earn race-day rate through training. Use 2:1 glucose:fructose for &gt;60 g/h.</p>
-    <div class="pill-row"><span>W25 long (12–15 k)</span><span class="val">60 g/h</span></div>
-    <div class="pill-row"><span>W26 long (2 h 15)</span><span class="val">70 g/h</span></div>
-    <div class="pill-row"><span>W27 recce (40–50 k)</span><span class="val">80 g/h</span></div>
-    <div class="pill-row"><span>W28 long (4 h)</span><span class="val">85 g/h</span></div>
-    <div class="pill-row"><span>W29 race-sim (3 h 30)</span><span class="val">90 g/h</span></div>
-    <div class="pill-row"><span>🏁 RACE DAY</span><span class="val">80–90 g/h</span></div>
+    <p class="note">A 12–14 h finish at easy pace burns less per hour — rehearsed-and-boring beats aggressive-and-unearned. Use 2:1 glucose:fructose for &gt;60 g/h.</p>
+    <div class="pill-row"><span>Build 1 long (12–15 k)</span><span class="val">60 g/h</span></div>
+    <div class="pill-row"><span>Build 2 descent</span><span class="val">70 g/h</span></div>
+    <div class="pill-row"><span>Build 3 descent</span><span class="val">75 g/h</span></div>
+    <div class="pill-row"><span>Build 4 recce</span><span class="val">80 g/h</span></div>
+    <div class="pill-row"><span>Build 6 race-sim</span><span class="val">80 g/h</span></div>
+    <div class="pill-row"><span>🏁 RACE DAY</span><span class="val">70–80 g/h</span></div>
 
     <div class="sub-h">Sodium</div>
     <div class="pill-row"><span>Easy &lt;90'</span><span class="val">300–500 mg/L water</span></div>
@@ -367,18 +403,19 @@
     <div class="pill-row"><span>Race-sim / race</span><span class="val">1000 mg/h</span></div>
 
     <div class="sub-h">Sweat-rate test (mandatory)</div>
-    <div class="rule">Weigh pre + post W26 long and W28 long. Sweat rate (mL/h) = (pre − post + drunk_kg) × 1000 ÷ hours. Replace ~70% on race day.</div>
+    <div class="rule">Weigh pre + post Build 2 descent and Build 4 recce. Sweat rate (mL/h) = (pre − post + drunk_kg) × 1000 ÷ hours. Replace ~70% on race day.</div>
   </div>
 </details>
 
 <details>
   <summary>Heat acclimation</summary>
   <div class="content">
-    <p class="note">Latvia late July can hit 25–30 °C; 12 h exposure is significant heat stress. Sauna gives plasma-volume expansion in ~2 weeks.</p>
-    <div class="pill-row"><span>W27</span><span class="val">2 × sauna, 25 min</span></div>
-    <div class="pill-row"><span>W28</span><span class="val">2 × sauna, 25–30 min</span></div>
-    <div class="pill-row"><span>W29</span><span class="val">1 × sauna, 25 min</span></div>
-    <div class="pill-row"><span>W30</span><span class="val">— skip entirely (taper)</span></div>
+    <p class="note">Latvia late July can hit 25–30 °C; a 12–14 h finish is MORE heat exposure than a fast one, not less. Sauna gives plasma-volume expansion in ~2 weeks.</p>
+    <div class="pill-row"><span>Build 3</span><span class="val">sauna 25 min post-easy-run</span></div>
+    <div class="pill-row"><span>Build 4</span><span class="val">sauna 25 min</span></div>
+    <div class="pill-row"><span>Build 5 (Klaipeda)</span><span class="val">1–2 × sauna</span></div>
+    <div class="pill-row"><span>Build 6</span><span class="val">1 × sauna 25 min</span></div>
+    <div class="pill-row"><span>Build 7</span><span class="val">— skip entirely (taper)</span></div>
     <p class="note">Immediately after easy run. Hydrate properly after. Skip if Oura readiness &lt;75 that morning.</p>
   </div>
 </details>
@@ -392,17 +429,17 @@
     <div class="rule">Post-lunch nap <strong>25 min</strong> on Mon, Tue, Thu, Sat. Set timer.</div>
     <div class="sub-h">Hard gates (calibrated to your ~7 h baseline)</div>
     <div class="rule"><strong>Sleep &gt;1 h below 7 h two nights running</strong> → Tuesday quality becomes easy.</div>
-    <div class="rule"><strong>Oura sleep balance &lt;55 for 3 days</strong> → hold weekly volume flat.</div>
-    <div class="rule"><strong>Readiness &lt;70 two days running</strong> → skip next planned quality.</div>
+    <div class="rule"><strong>Readiness &lt;70 two days running</strong> → hold volume flat, skip next quality.</div>
+    <div class="rule">This is half the LEA correction. The training won't stick without it.</div>
   </div>
 </details>
 
 <details>
-  <summary>Race-day pacing rules</summary>
+  <summary>Race-day pacing rules (first ultra)</summary>
   <div class="content">
     <div class="sub-h">First 50 km (most important)</div>
     <div class="rule"><strong>HR cap 148, never above 152.</strong> First 30 k should feel "almost too easy" — that's the pacing, not a bug.</div>
-    <div class="rule"><strong>Power-hike anything ≥10% grade. No exceptions.</strong></div>
+    <div class="rule"><strong>Power-hike anything ≥10% grade. No exceptions.</strong> Save the quads for the descents.</div>
     <div class="rule"><strong>Bail-out trigger:</strong> HR drift &gt;10 bpm at same pace → slow down.</div>
 
     <div class="sub-h">50–80 km</div>
@@ -412,17 +449,18 @@
     <div class="rule">Run by feel. Empty the tank if anything's there.</div>
 
     <div class="sub-h">Fuel + caffeine</div>
-    <div class="pill-row"><span>Carbs</span><span class="val">80–90 g/h</span></div>
+    <div class="pill-row"><span>Carbs</span><span class="val">70–80 g/h</span></div>
     <div class="pill-row"><span>Sodium</span><span class="val">1000 mg/h</span></div>
     <div class="pill-row"><span>Caffeine pre-race</span><span class="val">1–3 mg/kg, 45 min before</span></div>
     <div class="pill-row"><span>Caffeine top-ups</span><span class="val">hour 6, hour 10</span></div>
+    <p class="note">First ultra: the discipline that matters most is not racing the first 50 k. Hold the line.</p>
   </div>
 </details>
 
 <details>
   <summary>Race week + travel</summary>
   <div class="content">
-    <div class="sub-h">Pre-race checklist (by Jun 30)</div>
+    <div class="sub-h">Pre-race checklist (by Jul 27)</div>
     <div class="rule">Confirm start time, mandatory kit, drop-bag deadlines, transport plan.</div>
 
     <div class="sub-h">Carb load</div>
@@ -431,10 +469,10 @@
     <div class="pill-row"><span>Fri Jul 31</span><span class="val">8–10 g/kg · shake-out + kit check</span></div>
 
     <div class="sub-h">Friday Jul 31</div>
-    <div class="rule">Shake-out at venue. Kit + drop-bag by 16:00. Familiar high-carb dinner 18:30. Lights out 21:30.</div>
+    <div class="rule">Shake-out at venue. Kit + drop-bag by 16:00. Familiar high-carb dinner 18:30. Lights out 21:30. Sleep 9 h+.</div>
 
     <div class="sub-h">Race morning Aug 1</div>
-    <div class="rule">Breakfast 4 h pre-start. 2 g/kg carbs (~140 g). Familiar foods only. Caffeine ~45 min pre-start.</div>
+    <div class="rule">Breakfast 4 h pre-start. 2 g/kg carbs (~125 g). Familiar foods only. Caffeine ~45 min pre-start.</div>
 
     <div class="sub-h">Drop bag essentials</div>
     <div class="rule">Spare gels · anti-chafe · second socks · salt caps · backup headlamp battery.</div>
@@ -445,13 +483,31 @@
   <summary>What's NOT in the plan</summary>
   <div class="content">
     <ul class="exercise-list">
-      <li><span class="exercise-name">No iron supplementation</span> <span class="exercise-detail">Ferritin 69 ng/mL is normal — no evidence base at this level.</span></li>
-      <li><span class="exercise-name">No 5 K time trial</span> <span class="exercise-detail">Marathon + Course de l'Escalade already give zones.</span></li>
+      <li><span class="exercise-name">No fast descending before the recce</span> <span class="exercise-detail">Build eccentric load by volume first; faster descents only from Build 4 on real terrain.</span></li>
+      <li><span class="exercise-name">No heavy lifting Mon or Fri</span> <span class="exercise-detail">Mon = descent-DOMS day; Fri = pre-descent. Heavy work sits Wednesday.</span></li>
+      <li><span class="exercise-name">No volume above the weekly ceiling</span> <span class="exercise-detail">Tissue tolerance, not available time, is the limiter off this base.</span></li>
+      <li><span class="exercise-name">No iron supplementation</span> <span class="exercise-detail">Ferritin normal — no evidence base at this level.</span></li>
+      <li><span class="exercise-name">No 5 K time trial</span> <span class="exercise-detail">Marathon already calibrates zones.</span></li>
       <li><span class="exercise-name">No Nordic hamstring curls</span> <span class="exercise-detail">Wrong stimulus for the actual cramp etiology.</span></li>
-      <li><span class="exercise-name">No volume above 11.5 h/week</span> <span class="exercise-detail">Would re-trigger LEA / fatigue spiral.</span></li>
       <li><span class="exercise-name">No double thresholds</span> <span class="exercise-detail">Overkill for ultra goals.</span></li>
       <li><span class="exercise-name">No train-low / carb restriction</span> <span class="exercise-detail">Active LEA signal contraindicates.</span></li>
+      <li><span class="exercise-name">No manufactured hills in Klaipeda</span> <span class="exercise-detail">Soft-sand dunes = ankle risk for no adaptation.</span></li>
     </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Weekly feedback loop (Sundays)</summary>
+  <div class="content">
+    <p class="note">Each Sunday, send these five so the plan can load, hold, or back off:</p>
+    <ul class="exercise-list">
+      <li><span class="exercise-name">Sessions done vs planned</span> <span class="exercise-detail">Strava auto-covers this.</span></li>
+      <li><span class="exercise-name">Oura</span> <span class="exercise-detail">Avg sleep, readiness trend, any nights &lt;7 h.</span></li>
+      <li><span class="exercise-name">Subjective legs</span> <span class="exercise-detail">Fresh / normal / heavy — and how the descents felt.</span></li>
+      <li><span class="exercise-name">Any niggle</span> <span class="exercise-detail">Hip / plantar especially, 0–3 scale.</span></li>
+      <li><span class="exercise-name">Fuelling</span> <span class="exercise-detail">Hit the g/h target? Any GI issue?</span></li>
+    </ul>
+    <p class="note">Most important signal the next two weeks: does the heavy-legs-at-easy-pace feeling clear?</p>
   </div>
 </details>
 
@@ -462,96 +518,86 @@
     <div class="rule">Good readiness + motivation → run the prescription.</div>
     <div class="rule">Borderline → run at the easy end of the range.</div>
     <div class="rule">Bad → swap quality for easy, swap long for medium, move by a day.</div>
-    <div class="rule"><strong>Show up consistently. Don't grind.</strong> The race is won by arriving healthiest and most adapted, not by the most "perfect" weeks.</div>
+    <div class="rule"><strong>Show up consistently. Don't grind.</strong> For a first ultra off disrupted prep, arriving healthy is the whole goal — the index follows from that.</div>
   </div>
 </details>
 
 <footer>
-  Gauja 91 km program · v2 · Jun 12 2026<br>
-  Reviewer-revised after critical peer review
+  Gauja 91 km program · v4 · Jun 15 2026<br>
+  Recalibrated: 7-week build, finish-first 12–14 h, smoothed ramp, descent + strength re-sequenced
 </footer>
 
 <script>
 const RACE = new Date('2026-08-01T00:00:00');
 
 const WEEKS = [
-  { num: 24, start: '2026-06-08', end: '2026-06-14', phase: 'Regen', volume: '~6 h',
+  { num: 1, start: '2026-06-15', end: '2026-06-21', phase: 'Aerobic rebuild', volume: '~8 h',
     days: [
-      ['Mon Jun 8', 'Easy 5.5 k done · L shin fatigue flagged', false],
-      ['Tue Jun 9', 'Rest', false],
-      ['Wed Jun 10', 'Rest + upper body gym', false],
-      ['Thu Jun 11', 'Rest + lab draw', false],
-      ['Fri Jun 12', 'Rest OR 30\' walk', false],
-      ['Sat Jun 13', 'Easy 8–10 k flat · HR <140', false],
-      ['Sun Jun 14', '30–45\' walk OR easy 5–6 k', false],
-    ]},
-  { num: 25, start: '2026-06-15', end: '2026-06-21', phase: 'Aerobic rebuild', volume: '~8 h',
-    days: [
-      ['Mon Jun 15', 'Easy 60\' + Strength A (light)', false],
+      ['Mon Jun 15', 'Easy 60\' + daily micro-block (light)', false],
       ['Tue Jun 16', 'Easy 70\' + 4×20" strides', false],
-      ['Wed Jun 17', 'Easy 60\' OR easy spin 45\'', false],
-      ['Thu Jun 18', 'Easy 70\' + 4×20" strides', false],
-      ['Fri Jun 19', '30\' shake-out + Strength B', false],
-      ['Sat Jun 20', 'Easy long 12–15 k · <200 m vert · HR <148 · 60 g/h fuel', false],
+      ['Wed Jun 17', 'Easy 60\' + Strength A (light) OR easy spin 45\'', false],
+      ['Thu Jun 18', 'Easy 70\' + 4×20" strides + Strength B (light)', false],
+      ['Fri Jun 19', '30\' shake-out (no lift)', false],
+      ['Sat Jun 20', 'Easy long 12–15 k · <200 m vert · HR <148 · 60 g/h fuel', true],
       ['Sun Jun 21', 'Easy 8–10 k flat', false],
     ]},
-  { num: 26, start: '2026-06-22', end: '2026-06-28', phase: 'First quality + first long', volume: '~9.5 h',
+  { num: 2, start: '2026-06-22', end: '2026-06-28', phase: 'First quality + first descent', volume: '~9.5 h',
     days: [
-      ['Mon Jun 22', 'Easy 60\' + Strength A', false],
+      ['Mon Jun 22', 'Easy 50–60\' recovery + micro-block', false],
       ['Tue Jun 23', 'Quality — 4×4\' uphill sub-T (HR 155–162), 2\' jog', true],
-      ['Wed Jun 24', 'Easy 80\'', false],
-      ['Thu Jun 25', 'Easy 60\' + 6×20" strides', false],
-      ['Fri Jun 26', '30\' shake-out + Strength B', false],
-      ['Sat Jun 27', 'Long 2 h 15 · 600–800 m vert · sweat-rate test · 70 g/h', true],
+      ['Wed Jun 24', 'Easy 60\' + Strength A', false],
+      ['Thu Jun 25', 'Easy 60\' + 6×20" strides + Strength B (light)', false],
+      ['Fri Jun 26', '30\' shake-out (no lift)', false],
+      ['Sat Jun 27', '🏔️ Sigulda 2 h 15 · 600–800 m vert · 4–6×90s controlled downhill reps (submaximal) · sweat-rate test · 70 g/h', true],
       ['Sun Jun 28', 'Easy 75\'', false],
     ]},
-  { num: 27, start: '2026-06-29', end: '2026-07-05', phase: 'Course recce week', volume: '~11 h',
+  { num: 3, start: '2026-06-29', end: '2026-07-05', phase: 'Build descent volume', volume: '~10 h',
     days: [
-      ['Mon Jun 29', 'Easy 60\' + Strength A', false],
-      ['Tue Jun 30', 'Easy 70\' + 4×20" strides', false],
-      ['Wed Jul 1', 'Easy 60\'', false],
-      ['Thu Jul 2', 'Easy 50\' + 4 strides', false],
-      ['Fri Jul 3', 'Rest OR 30\' shake-out · carb top-up 7–8 g/kg', false],
-      ['Sat Jul 4', '🗺️ COURSE RECCE 40–50 k · 70–75% effort · full kit · 80 g/h · 1000–1400 m vert', true],
-      ['Sun Jul 5', '1 h easy flush flat', false],
+      ['Mon Jun 29', 'Easy 50–60\' recovery + micro-block', false],
+      ['Tue Jun 30', 'Quality — 3×8\' sub-T (HR 158–165), 3\' jog', true],
+      ['Wed Jul 1', 'Easy 60\' + Strength A', false],
+      ['Thu Jul 2', 'Easy 60\' + 6×20" strides + Strength B (light)', false],
+      ['Fri Jul 3', '30\' shake-out (no lift)', false],
+      ['Sat Jul 4', '🏔️ Sigulda 2 h 45–3 h · 900–1200 m vert · 5×3min sustained controlled descents (NOT fast yet) · 75 g/h · sauna 25\' after', true],
+      ['Sun Jul 5', 'Easy 90\' flat', false],
     ]},
-  { num: 28, start: '2026-07-06', end: '2026-07-12', phase: 'Peak specific', volume: '~11.5 h',
+  { num: 4, start: '2026-07-06', end: '2026-07-12', phase: 'Course recce (biggest day)', volume: '~11 h',
     days: [
-      ['Mon Jul 6', 'Easy 70\' + Strength A + hike 30\'@12%', false],
-      ['Tue Jul 7', 'Quality — 3×10\' sub-T (HR 158–165), 3\' jog', true],
-      ['Wed Jul 8', 'Easy 80\' + hike 30\'@12%', false],
-      ['Thu Jul 9', 'Quality — 4×5\' uphill (HR 162–168), 3\' down', true],
-      ['Fri Jul 10', '30\' shake-out + Strength B maintenance', false],
-      ['Sat Jul 11', 'Long 4 h trail · 1500–1800 m vert · descent reps · 85 g/h · sauna 25\' after', true],
-      ['Sun Jul 12', 'Easy 2 h', false],
+      ['Mon Jul 6', 'Easy 50–60\' recovery + micro-block', false],
+      ['Tue Jul 7', 'Easy 70\' + 4×20" strides (recce is the stimulus)', false],
+      ['Wed Jul 8', 'Easy 60\' + Strength A (maintenance, lighter)', false],
+      ['Thu Jul 9', 'Easy 50\' + 4 strides (no lift — bank freshness)', false],
+      ['Fri Jul 10', 'Rest OR 30\' shake-out · carb top-up 7–8 g/kg', false],
+      ['Sat Jul 11', '🗺️ COURSE RECCE 35–45 k · 70–75% effort · full kit · 80 g/h · 1000–1400 m vert · faster race-effort descending · sweat-rate test #2', true],
+      ['Sun Jul 12', 'Easy 1 h flush flat only', false],
     ]},
-  { num: 29, start: '2026-07-13', end: '2026-07-19', phase: 'Race-sim brick', volume: '~11 h',
+  { num: 5, start: '2026-07-13', end: '2026-07-19', phase: 'Klaipeda — flat de-load', volume: '~7 h',
     days: [
-      ['Mon Jul 13', 'Easy 60\' + Strength A (light maintenance)', false],
-      ['Tue Jul 14', 'Easy 70\' + 4×3\' race-climb (HR 158–165)', false],
-      ['Wed Jul 15', 'Easy 50\' + light hike', false],
-      ['Thu Jul 16', 'Easy 40\' + 4 strides', false],
-      ['Fri Jul 17', 'Rest / shake-out 25\'', false],
-      ['Sat Jul 18', '🎯 RACE-SIM 3 h 30 · race kit + 90 g/h · 1200–1400 m vert · sauna after', true],
-      ['Sun Jul 19', 'Easy 2 h · drop yoga this week', false],
+      ['Mon Jul 13', 'Easy 50\' flat + micro-block', false],
+      ['Tue Jul 14', 'Easy 60\' + 4×3\' tempo on flat (HR 155–162)', false],
+      ['Wed Jul 15', 'Easy 45\' OR rest + Strength A (light maintenance)', false],
+      ['Thu Jul 16', 'Easy 50\' + 6×20" strides', false],
+      ['Fri Jul 17', '30\' shake-out + Strength B (light)', false],
+      ['Sat Jul 18', 'Easy 90\' flat (boardwalk / Curonian Spit) · treadmill-decline 20\' if available · sauna 25\'', false],
+      ['Sun Jul 19', 'Easy 45\' OR rest', false],
     ]},
-  { num: 30, start: '2026-07-20', end: '2026-07-26', phase: 'Taper W1', volume: '~7 h',
+  { num: 6, start: '2026-07-20', end: '2026-07-26', phase: 'Race-sim + taper start', volume: '~6 h',
     days: [
-      ['Mon Jul 20', 'Easy 50\' + Strength A (very light)', false],
-      ['Tue Jul 21', 'Easy 50\' + 4×3\' race-climb (HR 158–162)', false],
+      ['Mon Jul 20', 'Easy 50\' + micro-block', false],
+      ['Tue Jul 21', 'Easy 60\' + 4×3\' race-climb effort (HR 158–162)', false],
       ['Wed Jul 22', 'Easy 50\' + light hike 20\'', false],
       ['Thu Jul 23', 'Easy 40\' + 6×30" hill bounds', false],
-      ['Fri Jul 24', 'Easy 30\' + Strength B (very light, NO Copenhagens)', false],
-      ['Sat Jul 25', '1 h 45 easy + 4×3\' race-pace climb', false],
-      ['Sun Jul 26', 'Easy 1 h', false],
+      ['Fri Jul 24', 'Rest / 25\' shake-out', false],
+      ['Sat Jul 25', '🎯 RACE-SIM BRICK 2 h 30–3 h · race kit + 80 g/h · 800–1200 m vert · pacing + fuel discipline · sauna 25\'', true],
+      ['Sun Jul 26', 'Easy 1 h · drop yoga this week · SHBG retest', false],
     ]},
-  { num: 31, start: '2026-07-27', end: '2026-08-02', phase: 'Race week', volume: '~3 h + race',
+  { num: 7, start: '2026-07-27', end: '2026-08-02', phase: 'Race week', volume: '~3 h + race',
     days: [
-      ['Mon Jul 27', 'Easy 40\' + 6×20" strides + hike 15\'@12%', false],
-      ['Tue Jul 28', 'Easy 30\' + 4×90" race-climb', false],
+      ['Mon Jul 27', 'Easy 40\' + 6×20" strides + light hike 15\'@12%', false],
+      ['Tue Jul 28', 'Easy 30\' + 4×90" race-climb effort', false],
       ['Wed Jul 29', '30\' shake-out OR rest', false],
       ['Thu Jul 30', 'REST · carb load 8–10 g/kg · travel', false],
-      ['Fri Jul 31', '20–30\' easy + 4 strides · gear check · sleep 9 h+', false],
+      ['Fri Jul 31', '20–30\' easy + 4 strides · gear + drop-bag by 16:00 · sleep 9 h+', false],
       ['Sat Aug 1', '🏁 RACE — Gauja 91 km', true],
       ['Sun Aug 2', 'Walk only', false],
     ]},
@@ -582,7 +628,7 @@ function daysToRace() {
 const week = findCurrentWeek();
 const today = todayISO();
 document.getElementById('countdownNum').textContent = daysToRace();
-document.getElementById('phaseWeek').textContent = `${week.phase} · W${week.num}`;
+document.getElementById('phaseWeek').textContent = `${week.phase} · Build ${week.num}`;
 
 // Today
 const todayEntry = week.days.find(([label]) => toISO(label) === today);
@@ -611,7 +657,7 @@ for (const w of WEEKS) {
   const d = document.createElement('details');
   if (w.num === week.num) d.open = true;
   const summary = document.createElement('summary');
-  summary.textContent = `W${w.num} · ${w.phase}`;
+  summary.textContent = `Build ${w.num} · ${w.phase}`;
   d.appendChild(summary);
   const content = document.createElement('div');
   content.className = 'content';
