@@ -314,7 +314,7 @@
     <div class="pill-row"><span>Threshold (sub-T)</span><span class="val">3:36–3:54/km · HR 155–167</span></div>
     <div class="pill-row"><span>Speed (strides only)</span><span class="val">3:19–3:35/km</span></div>
     <div class="sub-h">Weekly volume ceiling (not a target)</div>
-    <div class="rule">Ramp: <strong>8 → 9.5 → 10 → 11 (recce) → 7 → 6 → race</strong>. Tissue adaptation rate caps the build, not the hours available. Borderline readiness → hit the lower end.</div>
+    <div class="rule">Ramp: <strong>8 → 9.5 → 10 → 11 (recce) → 7 → 5 → race</strong>. Tissue adaptation rate caps the build, not the hours available. Borderline readiness → hit the lower end.</div>
   </div>
 </details>
 
@@ -359,6 +359,19 @@
       <li><span class="exercise-name">Clamshells</span> <span class="exercise-detail">2 × 15 each side</span></li>
       <li><span class="exercise-name">Foot intrinsics</span> <span class="exercise-detail">1 min · toe spreads + towel scrunches</span></li>
     </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Workday treadmill · power-hike (12%)</summary>
+  <div class="content">
+    <p class="note">Low-impact, race-specific climbing work done midday during the workday. Builds power-hike economy + climbing durability for Gauja's ~3,000 m of ascent, and adds aerobic volume without the impact of more running.</p>
+    <div class="rule"><strong>2× per week</strong> (default Mon + Thu), <strong>20–40 min at 12% incline</strong>, easy — walk, don't run. HR Z1 / low Z2 (≤ ~130).</div>
+    <div class="rule"><strong>Never Tue (quality), Fri or Sat (pre-descent / descent).</strong> Keeps the key sessions clean.</div>
+    <div class="rule">Counts toward weekly hours — it is <strong>not bonus volume on top</strong>.</div>
+    <div class="rule">Does <strong>not</strong> replace the Sigulda descents: the treadmill is uphill / concentric only, and descent (eccentric) durability is the #1 risk — it must come from real downhill.</div>
+    <div class="note-warn">Standing desk: keep. Open-ended daily NEAT walking: <strong>parked for now</strong> — with the energy-availability (SHBG) + sub-7 h sleep flags, extra ambient load competes with recovery. Revisit once sleep is consistently 7 h+.</div>
+    <p class="note">Taper weeks (Build 6–7): drop the power-hikes.</p>
   </div>
 </details>
 
@@ -553,17 +566,17 @@ const WEEKS = [
     ]},
   { num: 3, start: '2026-06-29', end: '2026-07-05', phase: 'Build descent volume', volume: '~10 h',
     days: [
-      ['Mon Jun 29', 'Easy 50–60\' recovery + micro-block', false],
-      ['Tue Jun 30', 'Quality — 3×8\' sub-T (HR 158–165), 3\' jog', true],
-      ['Wed Jul 1', 'Easy 60\' + Strength A', false],
-      ['Thu Jul 2', 'Easy 60\' + 6×20" strides + Strength B (light)', false],
-      ['Fri Jul 3', '30\' shake-out (no lift)', false],
-      ['Sat Jul 4', '🏔️ Sigulda 2 h 45–3 h · 900–1200 m vert · 5×3min sustained controlled descents (NOT fast yet) · 75 g/h · sauna 25\' after', true],
+      ['Mon Jun 29', 'Easy 50–60\' recovery + micro-block · 🚶 midday treadmill power-hike 20\'@12% (easy, HR <130)', false],
+      ['Tue Jun 30', 'Quality — 3×8\' sub-T (HR 158–165), 3\' jog · + Strength B (light, after run)', true],
+      ['Wed Jul 1', 'Easy 60\' + Strength A (moderate — light on eccentric calf raises this week)', false],
+      ['Thu Jul 2', 'Easy 50–60\' + 6×20" strides — no lift, no power-hike (prime legs for Fri)', false],
+      ['Fri Jul 3', '🏔️ Sigulda 2 h 45–3 h · 900–1200 m vert · 5×3min sustained controlled descents (NOT fast yet) · 75 g/h · sauna 25\' after — moved to Fri this week', true],
+      ['Sat Jul 4', 'Easy 60–75\' recovery, flat', false],
       ['Sun Jul 5', 'Easy 90\' flat', false],
     ]},
   { num: 4, start: '2026-07-06', end: '2026-07-12', phase: 'Course recce (biggest day)', volume: '~11 h',
     days: [
-      ['Mon Jul 6', 'Easy 50–60\' recovery + micro-block', false],
+      ['Mon Jul 6', 'Easy 50–60\' recovery + micro-block · 🚶 midday treadmill power-hike 20\'@12% (easy) — last one before recce', false],
       ['Tue Jul 7', 'Easy 70\' + 4×20" strides (recce is the stimulus)', false],
       ['Wed Jul 8', 'Easy 60\' + Strength A (maintenance, lighter)', false],
       ['Thu Jul 9', 'Easy 50\' + 4 strides (no lift — bank freshness)', false],
@@ -573,23 +586,23 @@ const WEEKS = [
     ]},
   { num: 5, start: '2026-07-13', end: '2026-07-19', phase: 'Klaipeda — flat de-load', volume: '~7 h',
     days: [
-      ['Mon Jul 13', 'Easy 50\' flat + micro-block', false],
+      ['Mon Jul 13', 'Easy 50\' flat + micro-block · 🚶 optional treadmill power-hike 20\'@12% if hotel gym has incline', false],
       ['Tue Jul 14', 'Easy 60\' + 4×3\' tempo on flat (HR 155–162)', false],
       ['Wed Jul 15', 'Easy 45\' OR rest + Strength A (light maintenance)', false],
       ['Thu Jul 16', 'Easy 50\' + 6×20" strides', false],
       ['Fri Jul 17', '30\' shake-out + Strength B (light)', false],
-      ['Sat Jul 18', 'Easy 90\' flat (boardwalk / Curonian Spit) · treadmill-decline 20\' if available · sauna 25\'', false],
+      ['Sat Jul 18', 'Easy 90\' flat (boardwalk / Curonian Spit) · sauna 25\' (heat work) · descent maintenance = slow eccentric step-downs / stair descents (no decline treadmill needed)', false],
       ['Sun Jul 19', 'Easy 45\' OR rest', false],
     ]},
-  { num: 6, start: '2026-07-20', end: '2026-07-26', phase: 'Race-sim + taper start', volume: '~6 h',
+  { num: 6, start: '2026-07-20', end: '2026-07-26', phase: 'Race-sim + taper start', volume: '~5 h',
     days: [
-      ['Mon Jul 20', 'Easy 50\' + micro-block', false],
+      ['Mon Jul 20', 'Easy 50\' + micro-block · SHBG retest (fasted AM — rested after de-load week)', false],
       ['Tue Jul 21', 'Easy 60\' + 4×3\' race-climb effort (HR 158–162)', false],
       ['Wed Jul 22', 'Easy 50\' + light hike 20\'', false],
       ['Thu Jul 23', 'Easy 40\' + 6×30" hill bounds', false],
       ['Fri Jul 24', 'Rest / 25\' shake-out', false],
-      ['Sat Jul 25', '🎯 RACE-SIM BRICK 2 h 30–3 h · race kit + 80 g/h · 800–1200 m vert · pacing + fuel discipline · sauna 25\'', true],
-      ['Sun Jul 26', 'Easy 1 h · drop yoga this week · SHBG retest', false],
+      ['Sat Jul 25', '🎯 RACE-SIM 90\'–2 h · race kit + 80 g/h · 400–600 m vert · easy–moderate · fuel/GI + gear + one protective descent bout · NOT durability · sauna 25\'', true],
+      ['Sun Jul 26', 'Easy 1 h · drop yoga this week', false],
     ]},
   { num: 7, start: '2026-07-27', end: '2026-08-02', phase: 'Race week', volume: '~3 h + race',
     days: [
