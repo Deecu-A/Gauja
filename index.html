@@ -72,7 +72,7 @@
   .today-card { background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%); border-left: 4px solid var(--accent); }
   .today-day { font-size: 11px; font-weight: 700; color: var(--accent-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
   .today-prescription { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.45; }
-  .today-purpose { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .today-purpose { font-size: 13px; color: var(--accent-dark); margin-top: 10px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.45; }
   .week-table { width: 100%; border-collapse: collapse; }
   .week-table tr { border-bottom: 1px solid var(--border); }
   .week-table tr:last-child { border-bottom: none; }
@@ -81,7 +81,9 @@
   .week-table tr.today-row { background: var(--accent-bg); }
   .week-table tr.today-row td { padding-left: 8px; padding-right: 8px; }
   .week-table tr.today-row td:first-child { color: var(--accent); padding-left: 8px; border-left: 3px solid var(--accent); }
-  .week-table .key { color: var(--accent); font-weight: 600; }
+  .week-table .key > div:first-child { color: var(--accent); font-weight: 600; }
+  .day-detail { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 400; line-height: 1.4; font-variant-numeric: tabular-nums; }
+  .week-table .key .day-detail { color: var(--muted); }
   details { background: var(--card); border-radius: 16px; margin-bottom: 12px; box-shadow: var(--shadow); overflow: hidden; }
   details > summary { list-style: none; cursor: pointer; padding: 16px 18px; font-size: 15px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: space-between; gap: 10px; user-select: none; -webkit-user-select: none; min-height: 44px; }
   details > summary::-webkit-details-marker { display: none; }
@@ -422,124 +424,124 @@ const RACE = new Date('2026-10-24T00:00:00');
 const CERT_DEADLINE = new Date('2026-09-14T00:00:00');
 
 const WEEKS = [
-  { num: 'W0', start: '2026-08-12', end: '2026-08-16', phase: 'Re-entry', where: 'Repovesi', volume: '7h40 · 1350 m',
-    note: 'Absorbing Tuesday’s 26 km / 3h29. Reintroducing neuromuscular work. No maximal efforts.',
+  { num: 'W0', start: '2026-08-12', end: '2026-08-16', phase: 'Re-entry', where: 'Repovesi', volume: '7h40 · ~72 km · 1350 m',
+    note: 'Absorbing Tuesday 26 km / 3h29. Reintroducing neuromuscular work. No maximal efforts, no threshold.',
     days: [
-      ['Wed Aug 12', 'Easy jog, roads. Foot routine + 15′ mobility', 'Recovery · 50′ · ≤130', false],
-      ['Thu Aug 13', 'Hilly road/trail + 6 × 12 s hill sprints (8–10%, full walk-down)', 'Endurance + power · 1h30 · 132–146 · 350 m', false],
-      ['Fri Aug 14', 'LONG — mixed trail/road. Last 20′ relaxed lift to Z2+. Fuel 70 g/h', 'Endurance · 2h45 · ≤148 · 500 m', true],
-      ['Sat Aug 15', 'Easy + 6 × 20 s strides. Bodyweight strength (travel version)', 'Recovery + durability · 50′ · ≤130', false],
-      ['Sun Aug 16', 'Rocky technical trail — deliberate footwork practice, no pace goal. Travel to Helsinki after', 'Specificity · 1h45 · ≤145 · 400 m', false],
+      ['Wed Aug 12', 'Easy jog on roads, flat. No strides. Then foot routine + 15 min mobility.', '50 min · ~9 km · HR ≤130 · 5:30–6:00/km · flat', false],
+      ['Thu Aug 13', '20 min easy warm-up → 6 × 12 s hill sprints on 8–10% grade, near-maximal, FULL 2–3 min walk down between → 45 min easy on hilly road/trail.', '1h30 · ~15 km · HR 132–146 (ignore HR on sprints) · 350 m', false],
+      ['Fri Aug 14', 'LONG. Mixed trail/road. First 2h25 strictly Z2, then final 20 min relaxed lift to race effort. Start fuelling at minute 30.', '2h45 · ~25 km · HR ≤148, last 20 min 149–155 · 500 m · 70 g carb/h', true],
+      ['Sat Aug 15', 'Easy 50 min + 6 × 20 s strides (full 60–90 s walk recovery). Then 25 min bodyweight strength — squats, split squats, calf raises, plank, Copenhagen.', '50 min · ~9 km · HR ≤130 · flat', false],
+      ['Sun Aug 16', 'Rocky technical trail. Deliberate footwork practice — eyes 4–5 m ahead, quick feet. No pace goal at all. Travel to Helsinki after.', '1h45 · ~14 km · HR ≤145 · 400 m', false],
     ]},
-  { num: 'W1', start: '2026-08-17', end: '2026-08-23', phase: 'Aerobic build, first quality', where: 'Helsinki', volume: '9h05 · 2100 m',
-    note: 'No 30-minute time trial. Instead: run a fixed 20′ at HR 150 on Tuesday and log the pace — repeat monthly.',
+  { num: 'W1', start: '2026-08-17', end: '2026-08-23', phase: 'Aerobic build, first quality', where: 'Helsinki', volume: '9h05 · ~87 km · 2100 m',
+    note: 'No 30-minute time trial — too costly ten days after a cold, for an LTHR you already know. The Tuesday 20 min @ HR 150 check replaces it and repeats monthly.',
     days: [
-      ['Mon Aug 17', 'FULL REST from running. Gym A. Foot routine. Treadmill meeting-walk OK', 'Recovery', false],
-      ['Tue Aug 18', 'Easy Z2 + 8 × 20 s strides. Monthly 20′ @ HR 150 check', 'Endurance · 1h10 · 132–145', false],
-      ['Wed Aug 19', 'Sub-T uphill: 20′ WU → 5 × 4′ uphill @Z3, jog/walk down 3′ → 15′ CD', 'Power · 1h20 · reps 158–164 · 450 m', true],
-      ['Thu Aug 20', 'Easy recovery + 6 × 12 s hill sprints · Gym B', 'Recovery + power · 55′ · ≤132', false],
-      ['Fri Aug 21', 'LONG — hilly trail. Final 25′ at race effort on tired legs. Fuel 80 g/h', 'Endurance + specificity · 3h00 · ≤148 · 600 m', true],
-      ['Sat Aug 22', 'Malminkartanonhuippu vert set: 10–12 × climb (90–150 s — power-hike the steep, run the rest), walk down fully', 'Specificity · 1h45 · reps 150–160 · 700 m', true],
-      ['Sun Aug 23', 'Easy + 6 × 20 s strides', 'Recovery · 55′ · ≤130', false],
+      ['Mon Aug 17', 'FULL REST from running. Gym A (45 min). Foot routine 6 min + 20 min mobility. Treadmill meeting-walk up to 45 min at 5–6% is fine — it is NEAT, not training.', 'No run · Gym A · HR ≤110 on the walk', false],
+      ['Tue Aug 18', 'Easy 1h10. Inside it, run 20 min steady at HR 150 on a flat loop and log the pace — this is the monthly benchmark, note the loop so you can repeat it. Finish with 8 × 20 s strides.', '1h10 · ~14 km · HR 132–145 · 4:45–5:15/km · 150 m', false],
+      ['Wed Aug 19', '20 min warm-up → 5 × 4 min uphill at HR 158–164 (RPE 7, short sentences only), jog/walk down 3 min between → 15 min cool-down.', '1h20 · ~13 km · reps HR 158–164 · 450 m', true],
+      ['Thu Aug 20', 'Easy recovery 55 min + 6 × 12 s hill sprints (full walk down). Then Gym B (35 min).', '55 min · ~10 km · HR ≤132 · 100 m', false],
+      ['Fri Aug 21', 'LONG on hilly Helsinki trails. 2h35 in Z2, then final 25 min at race effort on tired legs.', '3h00 · ~27 km · HR ≤148, last 25 min 149–156 · 600 m · 80 g carb/h', true],
+      ['Sat Aug 22', 'Malminkartanonhuippu. 20 min warm-up → 10–12 × climb (90–150 s each — power-hike the steepest section with hands on thighs, run the runnable parts), walk all the way down each time → 15 min cool-down.', '1h45 · ~13 km · reps HR 150–160 · 700 m', true],
+      ['Sun Aug 23', 'Easy 55 min + 6 × 20 s strides.', '55 min · ~10 km · HR ≤130 · 100 m', false],
     ]},
-  { num: 'W2', start: '2026-08-24', end: '2026-08-30', phase: 'Eccentric / durability camp', where: 'Helsinki → Cortina', volume: '14h50 on feet · 3200 m',
-    note: 'Cortina is a durability block, NOT race simulation — Sigulda is more specific to Puglia than Cortina is. Governor: if Friday feels worse than “hard but clearly sustainable”, cut Sunday to 45′ and drop next Tuesday’s workout.',
+  { num: 'W2', start: '2026-08-24', end: '2026-08-30', phase: 'Eccentric / durability camp', where: 'Helsinki → Cortina', volume: '14h50 on feet · ~72 km · 3200 m',
+    note: 'Cortina is a durability and eccentric block, NOT race simulation — Sigulda is more specific to Puglia than Cortina is. Governor: if Friday feels worse than "hard but clearly sustainable", cut Sunday to 45 min and drop next Tuesday workout.',
     days: [
-      ['Mon Aug 24', 'FULL REST from running. Gym A (legs light — travel week). Foot routine', 'Recovery', false],
-      ['Tue Aug 25', 'Sub-T uphill: 20′ WU → 4 × 6′ @Z3, walk down → 15′ CD', 'Power · 1h25 · reps 158–164 · 450 m', true],
-      ['Wed Aug 26', 'Easy rolling + 8 × 20 s strides', 'Endurance · 1h20 · 132–148', false],
-      ['Thu Aug 27', 'TRAVEL Helsinki → Cortina. Arrival shakeout + foot routine + 15′ mobility. Nothing else', 'Recovery · 40′ · ≤128', false],
-      ['Fri Aug 28', '🏔️ BIG MOUNTAIN DAY — 38–42 km. HARD CAPS: 6 h, ≤2200 m D+, ≤2000 m D−. Power-hike everything >10%. Run every descent controlled — high cadence, short steps, quiet feet, eyes 4–5 m ahead. Full race pack. Fuel 90 g/h + 700 mg Na/h', 'Endurance + eccentric · 6h cap · HR ≤145 throughout', true],
-      ['Sat Aug 29', 'VIA FERRATA — a genuinely moderate route, 4 h car-to-car cap. No running', 'Durability · ≤4 h', true],
-      ['Sun Aug 30', 'Easy valley run, gentle terrain. Not a mountain day', 'Recovery · 75–90′ · ≤138 · 200 m', false],
+      ['Mon Aug 24', 'FULL REST from running. Gym A (40 min, legs deliberately light — big travel week ahead). Foot routine.', 'No run · Gym A 40 min (legs light) · foot routine 6 min', false],
+      ['Tue Aug 25', '20 min warm-up → 4 × 6 min uphill at HR 158–164, walk down 3 min between → 15 min cool-down.', '1h25 · ~14 km · reps HR 158–164 · 450 m', true],
+      ['Wed Aug 26', 'Easy rolling 1h20 + 8 × 20 s strides.', '1h20 · ~15 km · HR 132–148 · 250 m', false],
+      ['Thu Aug 27', 'TRAVEL Helsinki → Cortina (late arrival, plan for it). Shakeout jog on arrival if there is light, otherwise walk. Foot routine + 15 min mobility. Nothing else — do not be tempted.', '40 min · ~7 km · HR ≤128', false],
+      ['Fri Aug 28', 'BIG MOUNTAIN DAY. 38–42 km. HARD CAPS: 6 hours, 2200 m climb, 2000 m descent — stop at whichever comes first. Power-hike everything over 10%. Run every descent CONTROLLED: high cadence, short steps, quiet feet, eyes 4–5 m ahead, land under your centre of mass, no braking with a straight leg. Carry the full race pack. Route with bail-outs, forecast checked, someone knows the plan.', '6h00 cap · 38–42 km · HR ≤145 THROUGHOUT · 2000–2200 m · 90 g carb/h + 700 mg Na/h + 500–600 ml/h', true],
+      ['Sat Aug 29', 'VIA FERRATA. Pick a genuinely moderate route. 4 hours car-to-car, hard cap. No running today.', '≤4 h · no running · low impact', true],
+      ['Sun Aug 30', 'Easy valley run on gentle terrain. NOT a mountain day. Then travel prep.', '75–90 min · ~13 km · HR ≤138 · 200 m', false],
     ]},
-  { num: 'W3', start: '2026-08-31', end: '2026-09-06', phase: 'Absorption', where: 'Cortina → Riga', volume: '7h45 · 650 m',
-    note: 'Frequency stays, load drops hard. This is where Cortina becomes fitness.',
+  { num: 'W3', start: '2026-08-31', end: '2026-09-06', phase: 'Absorption', where: 'Cortina → Riga', volume: '7h45 · ~86 km · 650 m',
+    note: 'Frequency stays high, load drops hard. This is where Cortina turns into fitness. Do not add volume because you feel good on Wednesday.',
     days: [
-      ['Mon Aug 31', 'TRAVEL Cortina → Riga. FULL REST. 20–30′ walk + foot routine. Compression on the plane. Eat heavily', 'Recovery', false],
-      ['Tue Sep 1', 'Easy flat, Mežaparks · Gym A at 60%', 'Recovery · 55′ · ≤128', false],
-      ['Wed Sep 2', 'Rolling easy + 8 × 20 s strides', 'Endurance · 1h20 · 132–145', false],
-      ['Thu Sep 3', 'Easy + 6 × 12 s hill sprints (arena hill) · Gym B', 'Recovery + power · 50′ · ≤132', false],
-      ['Fri Sep 4', 'Easy long, Mežaparks. Fuel 80 g/h', 'Endurance · 2h15 · ≤145 · 250 m', true],
-      ['Sat Sep 5', 'THRESHOLD #1 of 3: 20′ WU → 4 × 8′ @Th w/ 2′ float jog → 15′ CD', 'Threshold · 1h25 · reps 164–170 · 3:45–3:54', true],
-      ['Sun Sep 6', 'Easy + 6 × 20 s strides', 'Recovery · 1h00 · ≤130', false],
+      ['Mon Aug 31', 'TRAVEL Cortina → Riga. FULL REST. 20–30 min walk + foot routine. Compression socks on the plane. Eat heavily — this is a refuelling day, not a fasting day.', 'No run · travel day · 20–30 min walk · foot routine 6 min', false],
+      ['Tue Sep 1', 'Easy flat in Mežaparks. Then Gym A at 60% load (~30 min).', '55 min · ~10 km · HR ≤128 · 30 m', false],
+      ['Wed Sep 2', 'Rolling easy 1h20 + 8 × 20 s strides.', '1h20 · ~15 km · HR 132–145 · 150 m', false],
+      ['Thu Sep 3', 'Easy 50 min + 6 × 12 s hill sprints on the Mežaparks arena hill. Then Gym B (35 min).', '50 min · ~9 km · HR ≤132 · 100 m', false],
+      ['Fri Sep 4', 'Easy long in Mežaparks. Pure Z2 the whole way — no pickups, no finish surge.', '2h15 · ~24 km · HR ≤145 · 250 m · 80 g carb/h', true],
+      ['Sat Sep 5', 'THRESHOLD #1 of 3. 20 min warm-up → 4 × 8 min at HR 164–170 / 3:45–3:54 per km, with 2 min easy FLOAT JOG between (not a stop) → 15 min cool-down. Track or flat road.', '1h25 · ~17 km · reps HR 164–170 · 3:45–3:54/km · flat', true],
+      ['Sun Sep 6', 'Easy 1h00 + 6 × 20 s strides.', '1h00 · ~11 km · HR ≤130 · 50 m', false],
     ]},
-  { num: 'W4', start: '2026-09-07', end: '2026-09-13', phase: 'Sharpen + Stirnubuks', where: 'Riga', volume: '7h40 · 500 m',
+  { num: 'W4', start: '2026-09-07', end: '2026-09-13', phase: 'Sharpen + Stirnubuks', where: 'Riga', volume: '7h40 · ~85 km · 500 m',
     note: 'The 90 g/h data at threshold effort matters more than the finish time. Report both. Check whether this round is UTMB-indexed — if it is, it refreshes your 20K index for free.',
     days: [
-      ['Mon Sep 7', 'FULL REST from running. Gym A. Foot routine', 'Recovery', false],
-      ['Tue Sep 8', 'Sub-T: 20′ WU → 5 × 6′ @Z3 w/ 2′ jog → CD', 'Power · 1h25 · 158–165 · 3:55–4:08', true],
-      ['Wed Sep 9', 'Rolling trail + 8 × 12 s hill sprints', 'Endurance + power · 1h40 · 132–146 · 250 m', false],
-      ['Thu Sep 10', 'Easy · Gym B light — no heavy legs. Foot routine', 'Recovery · 45′ · ≤130', false],
-      ['Fri Sep 11', 'Primer: 25′ Z1 + 4 × 90 s at race effort + 10′ Z1. Race logistics, kit laid out, early night', 'Recovery + power · 40′ · reps 150–156', false],
-      ['Sat Sep 12', '🏁 STIRNUBUKS ~30 km — RACE IT HONESTLY. First 8 km capped HR ≤158, then progressive, final 8–10 km at 165–172. Full race kit and vest. Fuel 90 g/h even for a 2h30 race', 'Test + fuelling rehearsal · 2h15–2h35', true],
-      ['Sun Sep 13', 'Shakeout, or full rest if wrecked', 'Recovery · 45′ · ≤125', false],
+      ['Mon Sep 7', 'FULL REST from running. Gym A (45 min). Foot routine.', 'No run · Gym A 45 min · foot routine 6 min', false],
+      ['Tue Sep 8', '20 min warm-up → 5 × 6 min at HR 158–165 / 3:55–4:08 per km, 2 min easy jog between → 15 min cool-down.', '1h25 · ~17 km · reps HR 158–165 · 100 m', true],
+      ['Wed Sep 9', 'Rolling trail 1h40 + 8 × 12 s hill sprints.', '1h40 · ~18 km · HR 132–146 · 250 m', false],
+      ['Thu Sep 10', 'Easy 45 min. Gym B LIGHT (30 min) — no heavy legs two days before the race. Foot routine.', '45 min · ~8 km · HR ≤130 · 50 m', false],
+      ['Fri Sep 11', 'Primer: 25 min Z1 → 4 × 90 s at race effort → 10 min Z1. Then race logistics, kit laid out, early night.', '40 min · ~7 km · reps HR 150–156', false],
+      ['Sat Sep 12', 'STIRNUBUKS ~30 km — RACE IT HONESTLY. km 0–8: cap HR at 158, let people go. km 8–20: progressive, HR 158–165. km 20–30: HR 165–172, empty it over the last 3 km. Full race kit and vest — this is a fuelling rehearsal as much as a fitness test.', '2h15–2h35 · ~30 km · avg HR ~162 · 90 g carb/h', true],
+      ['Sun Sep 13', 'Shakeout jog, or full rest if wrecked. Your call, made honestly.', '45 min · ~7 km · HR ≤125', false],
     ]},
-  { num: 'W5', start: '2026-09-14', end: '2026-09-20', phase: 'Specific 1 · Sigulda #1', where: 'Riga', volume: '9h20 · 1850 m',
-    note: 'BLOODS THIS WEEK, fasted: SHBG, total + free testosterone, LH, ferritin, transferrin saturation, full blood count.',
+  { num: 'W5', start: '2026-09-14', end: '2026-09-20', phase: 'Specific 1 · Sigulda #1', where: 'Riga', volume: '9h20 · ~92 km · 1850 m',
+    note: 'BLOODS THIS WEEK, fasted: SHBG, total + free testosterone, LH, ferritin, transferrin saturation, full blood count. Trigger the action on free T and body mass, not SHBG.',
     days: [
-      ['Mon Sep 14', 'FULL REST. Gym A. Foot routine', 'Recovery', false],
-      ['Tue Sep 15', 'Easy + 8 × 20 s strides. No hard work 3 days post-race. Monthly 20′ @ HR 150 check', 'Endurance · 1h20 · 132–145', false],
-      ['Wed Sep 16', 'Treadmill uphill sub-T: 15′ WU → 5 × 5′ at 8–10% grade @Z3, 3′ flat-walk recovery → 15′ CD', 'Power + specificity · 1h15 · 158–165 · 550 m', true],
-      ['Thu Sep 17', 'Easy + 8 × 12 s hill sprints · Gym B', 'Recovery + power · 55′ · ≤132', false],
-      ['Fri Sep 18', '🏔️ SIGULDA #1 — 3h30. 60′ Z2 approach → descent technique block: 6 × (3–4′ climb @150–160 + 2–3′ controlled descent) → 60–70′ Z2, last 25′ at race effort. Fuel 90 g/h — first full-length test. Coach the technique, not just the volume', 'Eccentric + specificity · 3h30 · ≤148 · 900 m', true],
-      ['Sat Sep 19', 'Easy on tired legs + 6 × 20 s strides', 'Endurance · 1h10 · ≤142', false],
-      ['Sun Sep 20', 'Easy + finish with 20′ on soft sand (Vecāķi / Jūrmala) — SAND SESSION #1', 'Recovery + specificity · 1h10 · ≤135', false],
+      ['Mon Sep 14', 'FULL REST from running. Gym A (45 min). Foot routine.', 'No run · Gym A 45 min · foot routine 6 min', false],
+      ['Tue Sep 15', 'Easy 1h20 + 8 × 20 s strides. No hard work — three days post-race. Run the monthly 20 min @ HR 150 check on the same loop as 18 Aug and compare the pace.', '1h20 · ~16 km · HR 132–145 · 150 m', false],
+      ['Wed Sep 16', 'Treadmill. 15 min warm-up → 5 × 5 min at 8–10% grade, HR 158–165, hands off the rails, with 3 min flat walking recovery → 15 min cool-down. Ignore pace completely.', '1h15 · ~9 km · reps HR 158–165 · ~550 m', true],
+      ['Thu Sep 17', 'Easy 55 min + 8 × 12 s hill sprints. Then Gym B (35 min).', '55 min · ~10 km · HR ≤132 · 100 m', false],
+      ['Fri Sep 18', 'SIGULDA #1. 60 min Z2 approach → DESCENT TECHNIQUE BLOCK: 6 × (3–4 min climb at HR 150–160 + 2–3 min controlled descent) → 60–70 min Z2, with the last 25 min at race effort. Today you coach the technique, not just do the volume: high cadence, short steps, quiet feet, eyes 4–5 m ahead, arms wide, lean with the slope. First full-length fuelling test.', '3h30 · ~30 km · HR ≤148, reps ≤160, last 25 min 149–157 · 900 m · 90 g carb/h', true],
+      ['Sat Sep 19', 'Easy on tired legs + 6 × 20 s strides. Slow is correct today.', '1h10 · ~12 km · HR ≤142 · 100 m', false],
+      ['Sun Sep 20', 'Easy 1h10, running out to Vecāķi or Jūrmala, and finish with 20 min on SOFT SAND. Sand session #1 of 3 — the race finishes on it.', '1h10 · ~12 km · HR ≤135 · flat · sand finish', false],
     ]},
-  { num: 'W6', start: '2026-09-21', end: '2026-09-27', phase: 'Build peak — peak running week', where: 'Riga', volume: '11h50 · 1200 m',
-    note: 'Wednesday runs in the evening, in the dark, with the headlamp — night-vision and battery rehearsal.',
+  { num: 'W6', start: '2026-09-21', end: '2026-09-27', phase: 'Build peak — peak running week', where: 'Riga', volume: '11h50 · ~110 km · 1200 m',
+    note: 'Wednesday runs in the EVENING, in the dark, with the headlamp. Sunset in Riga is around 19:30 — go out at 20:00. Night-vision and battery rehearsal #1.',
     days: [
-      ['Mon Sep 21', 'FULL REST. Gym A. Foot routine', 'Recovery', false],
-      ['Tue Sep 22', 'THRESHOLD #2: 20′ WU → 4 × 8′ @Th w/ 2′ float → 15′ CD', 'Threshold · 1h30 · 164–170 · 3:45–3:54', true],
-      ['Wed Sep 23', '🌙 RUN THIS ONE IN THE EVENING, IN THE DARK, WITH THE HEADLAMP. Rolling trail + 8 × 12 s hill sprints', 'Endurance + specificity · 1h40 · 132–148 · 300 m', true],
-      ['Thu Sep 24', 'Easy · Gym B. Foot routine', 'Recovery · 55′ · ≤130', false],
-      ['Fri Sep 25', 'LONG 4h30 — Mežaparks + arena hill / stairs inserts. Race kit, race shoes, race pack. Final 60′ at race effort. Finish with 25′ soft sand at Vecāķi — SAND SESSION #2. Fuel 95 g/h + 700 mg Na/h', 'Specificity · 4h30 · ≤145 → 148–156 · 600–700 m', true],
-      ['Sat Sep 26', 'BACK-TO-BACK #1 — 2h00 easy, flat, on wrecked legs. Fuel 70 g/h. This day is the point of the week', 'Durability · 2h00 · ≤142', true],
-      ['Sun Sep 27', 'Easy + 6 × 20 s strides', 'Recovery · 1h15 · ≤130', false],
+      ['Mon Sep 21', 'FULL REST from running. Gym A (45 min). Foot routine.', 'No run · Gym A 45 min · foot routine 6 min', false],
+      ['Tue Sep 22', 'THRESHOLD #2 of 3. 20 min warm-up → 4 × 8 min at HR 164–170 / 3:45–3:54 per km, 2 min float jog between → 15 min cool-down.', '1h30 · ~18 km · reps HR 164–170 · 100 m', true],
+      ['Wed Sep 23', 'EVENING RUN, IN THE DARK, WITH THE HEADLAMP. Rolling trail 1h40 + 8 × 12 s hill sprints. Note how long the battery lasts at your working brightness.', '1h40 · ~17 km · HR 132–148 · 300 m', true],
+      ['Thu Sep 24', 'Easy 55 min. Then Gym B (35 min). Foot routine.', '55 min · ~10 km · HR ≤130 · 50 m', false],
+      ['Fri Sep 25', 'LONG 4h30. Race kit, race shoes, race pack. Structure: 3h05 in Z2 around Mežaparks with arena hill and stairs inserts → 60 min at race effort → run out to Vecāķi and finish with 25 min on SOFT SAND (sand session #2), easy.', '4h30 · ~40 km · HR ≤145 → 148–156 · 600–700 m · 95 g carb/h + 700 mg Na/h', true],
+      ['Sat Sep 26', 'BACK-TO-BACK #1. Easy and flat on wrecked legs. Deliberately slow — running economically on damaged legs IS the adaptation. This day is the point of the week.', '2h00 · ~20 km · HR ≤142 · flat · 70 g carb/h', true],
+      ['Sun Sep 27', 'Easy 1h15 + 6 × 20 s strides.', '1h15 · ~13 km · HR ≤130 · 50 m', false],
     ]},
-  { num: 'W7', start: '2026-09-28', end: '2026-10-04', phase: 'Specificity peak · dress rehearsal', where: 'Riga · Sigulda #2', volume: '11h20 · 2500 m',
-    note: 'Sauna block starts — bundle every session into a gym trip you’re already making. Zero standalone visits. 8–10 sessions total, 28 Sep → 19 Oct.',
+  { num: 'W7', start: '2026-09-28', end: '2026-10-04', phase: 'Specificity peak · dress rehearsal', where: 'Riga · Sigulda #2', volume: '11h20 · ~100 km · 2500 m',
+    note: 'Sauna block starts — bundle every session into a gym trip you are already making. Zero standalone visits. 8–10 sessions total, 28 Sep → 19 Oct. Rehydrate 1.5× the weight lost and add back the 200–400 kcal.',
     days: [
-      ['Mon Sep 28', 'FULL REST. Gym A — LAST HEAVY STRENGTH OF THE BLOCK. Sauna 15′ @80 °C. Foot routine', 'Recovery + heat', false],
-      ['Tue Sep 29', 'Treadmill uphill sub-T: 15′ WU → 5 × 6′ at 8–12% @Z3 → CD. Sauna 15′', 'Power + specificity · 1h30 · 158–165 · 700 m', true],
-      ['Wed Sep 30', 'Easy rolling + 8 × 12 s hill sprints', 'Endurance + power · 1h20 · 132–148 · 250 m', false],
-      ['Thu Oct 1', 'Easy · Gym B (moderate) · Sauna 18′. Foot routine', 'Recovery + heat · 50′ · ≤130', false],
-      ['Fri Oct 2', '🎯 DRESS REHEARSAL — SIGULDA, 5h00. Wake 04:45 · race breakfast 05:00 · drive = shuttle rehearsal, note what your stomach does · start ~07:15. 90′ Z2 → 2h00 race effort, power-hike every climb → 8 × (3–4′ climb + controlled descent) → final 45′ race effort on destroyed quads. EXACT race kit + full mandatory list. Drop-bag sim at 2h30. Fuel 100 g/h + 800 mg Na/h. Practise the collapsible cup', 'The most informative session of the block · 5h00 · 1400–1500 m', true],
-      ['Sat Oct 3', 'BACK-TO-BACK #2 — 1h45 easy, flat. Fuel 60 g/h', 'Durability · 1h45 · ≤140', true],
-      ['Sun Oct 4', 'Easy', 'Recovery · 55′ · ≤130', false],
+      ['Mon Sep 28', 'FULL REST from running. Gym A — LAST HEAVY STRENGTH SESSION OF THE BLOCK (45 min). Sauna 15 min at 80 °C. Foot routine.', 'No run · Gym A 45 min (last heavy) · sauna 15 min · foot routine 6 min', false],
+      ['Tue Sep 29', 'Treadmill. 15 min warm-up → 5 × 6 min at 8–12% grade, HR 158–165 → 15 min cool-down. Sauna 15 min after.', '1h30 · ~11 km · reps HR 158–165 · ~700 m', true],
+      ['Wed Sep 30', 'Easy rolling 1h20 + 8 × 12 s hill sprints.', '1h20 · ~14 km · HR 132–148 · 250 m', false],
+      ['Thu Oct 1', 'Easy 50 min. Gym B moderate (35 min). Sauna 18 min. Foot routine.', '50 min · ~9 km · HR ≤130 · 50 m', false],
+      ['Fri Oct 2', 'DRESS REHEARSAL — SIGULDA, 5 hours. TIMELINE: wake 04:45 · exact race breakfast 05:00 · drive to Sigulda 05:45–06:45 (this IS the shuttle rehearsal — sit, and note what your stomach does) · start ~07:15. SESSION: 90 min Z2 approach → 2h00 at true race effort, power-hiking every climb → 8 × (3–4 min climb + full controlled descent) → final 45 min at race effort on destroyed quads. CARRY: exact race shoes, socks, shorts, pack, flasks, gels, anti-chafe, headlamp, and the FULL mandatory kit list. Drop-bag simulation at 2h30. Practise the collapsible cup one-handed while moving.', '5h00 · ~42 km · HR ≤145 → 148–156 · 1400–1500 m · 100 g carb/h + 800 mg Na/h + 550 ml/h', true],
+      ['Sat Oct 3', 'BACK-TO-BACK #2. Easy and flat. Slow.', '1h45 · ~17 km · HR ≤140 · flat · 60 g carb/h', true],
+      ['Sun Oct 4', 'Easy 55 min.', '55 min · ~10 km · HR ≤130 · 50 m', false],
     ]},
-  { num: 'W8', start: '2026-10-05', end: '2026-10-11', phase: 'Consolidate', where: 'Riga', volume: '8h25 · 800 m',
-    note: 'Saturday is NOT the second Stirnubuks. No fitness available 14 days out, and it’s infection exposure 14 days before an international flight. Don’t have a bib.',
+  { num: 'W8', start: '2026-10-05', end: '2026-10-11', phase: 'Consolidate', where: 'Riga', volume: '8h25 · ~88 km · 800 m',
+    note: 'Saturday is NOT the second Stirnubuks. No fitness is available 14 days out, you will not hold HR 157 with a bib on, and it is infection exposure 14 days before an international flight. Do not have a bib.',
     days: [
-      ['Mon Oct 5', 'FULL REST. Gym B at 50% — no heavy, no deep eccentrics. Sauna 20′. Foot routine', 'Recovery + heat', false],
-      ['Tue Oct 6', 'LAST REAL WORKOUT: 20′ WU → 4 × 8′ @Z3 w/ 2′ float → CD. Sauna 20′', 'Power + heat · 1h20 · 158–165', true],
-      ['Wed Oct 7', 'Easy rolling + 8 × 20 s strides', 'Endurance · 1h30 · 132–146 · 200 m', false],
-      ['Thu Oct 8', 'Easy + 6 × 12 s hill sprints. Sauna 20′. Foot routine', 'Recovery + heat · 45′ · ≤130', false],
-      ['Fri Oct 9', 'Long 3h00, Z2 only, race shoes, fuel 90 g/h. Finish with 25′ soft sand — SAND SESSION #3', 'Endurance · 3h00 · ≤145 · 300 m', true],
-      ['Sat Oct 10', 'Easy 60′ + strides. NOT the second Stirnubuks', 'Recovery · 60′ · ≤132', false],
-      ['Sun Oct 11', 'Easy, or rest. Sauna 20′', 'Recovery · 50′ · ≤128', false],
+      ['Mon Oct 5', 'FULL REST from running. Gym B at 50% (~20 min) — no heavy loading, no deep eccentrics from here. Sauna 20 min. Foot routine.', 'No run · Gym B ~20 min at 50% · sauna 20 min · foot routine 6 min', false],
+      ['Tue Oct 6', 'LAST REAL WORKOUT OF THE BLOCK. 20 min warm-up → 4 × 8 min at HR 158–165 / 3:55–4:08 per km, 2 min float jog → 15 min cool-down. Sauna 20 min.', '1h20 · ~16 km · reps HR 158–165 · 100 m', true],
+      ['Wed Oct 7', 'Easy rolling 1h30 + 8 × 20 s strides.', '1h30 · ~16 km · HR 132–146 · 200 m', false],
+      ['Thu Oct 8', 'Easy 45 min + 6 × 12 s hill sprints. Sauna 20 min. Foot routine.', '45 min · ~8 km · HR ≤130 · 100 m', false],
+      ['Fri Oct 9', 'Long 3h00, pure Z2, no pickups. Race shoes. Finish with 25 min on SOFT SAND — sand session #3, the last one.', '3h00 · ~28 km · HR ≤145 · 300 m · 90 g carb/h', true],
+      ['Sat Oct 10', 'Easy 60 min + 6 × 20 s strides. NOT the second Stirnubuks.', '60 min · ~11 km · HR ≤132 · 50 m', false],
+      ['Sun Oct 11', 'Easy 50 min, or rest if the week has been heavy. Sauna 20 min.', '50 min · ~9 km · HR ≤128 · 50 m', false],
     ]},
-  { num: 'W9', start: '2026-10-12', end: '2026-10-18', phase: 'Taper 1 · Sigulda #3', where: 'Riga', volume: '6h50 · 900 m',
-    note: 'Friday is a SHORT descent primer, not a long run. Downhill protection peaks at 2–4 weeks and decays by 9 — Cortina to race day is eight weeks, so the spacing 28 Aug → 18 Sep → 2 Oct → 16 Oct carries it.',
+  { num: 'W9', start: '2026-10-12', end: '2026-10-18', phase: 'Taper 1 · Sigulda #3', where: 'Riga', volume: '6h50 · ~72 km · 900 m',
+    note: 'Friday is a SHORT descent primer, not a long run. Downhill protection peaks at 2–4 weeks and decays by 9 — Cortina to race day is eight weeks, so the spacing 28 Aug → 18 Sep → 2 Oct → 16 Oct carries it. Volume drops ~45%, intensity and frequency stay.',
     days: [
-      ['Mon Oct 12', 'FULL REST. Gym B at 40% — mobility, pogos, tibialis, core only. LAST GYM OF THE BLOCK. Sauna 20′', 'Recovery', false],
-      ['Tue Oct 13', 'Sharpener: 15′ WU → 5 × 3′ @Z3 w/ 2′ jog → 6 × 20 s strides → 15′ CD. Sauna 20′', 'Sharpening · 1h05 · 158–165', true],
-      ['Wed Oct 14', 'Easy rolling + 6 × 12 s hill sprints', 'Endurance · 1h15 · ≤145 · 200 m', false],
-      ['Thu Oct 15', 'Easy. Sauna 20′. Foot routine', 'Recovery · 45′ · ≤130', false],
-      ['Fri Oct 16', '🏔️🌙 SIGULDA #3 — last long, 2h15. AFTERNOON START, finishing after dark. Descent primer: 5 × 2–3′ controlled descents, then last 30′ by headlamp including one technical descent. VERIFY HEADLAMP BATTERY at working brightness. Last full 90 g/h test. Full race kit', 'Eccentric primer + night rehearsal · 2h15 · ≤145 · 500 m', true],
-      ['Sat Oct 17', 'Easy + 6 × 20 s strides', 'Recovery · 50′ · ≤130', false],
-      ['Sun Oct 18', 'Easy. Mandatory kit checked item by item against the UTMB list. Drop bag and finish bag packed', 'Recovery · 40′ · ≤128', true],
+      ['Mon Oct 12', 'FULL REST from running. Gym B at 40% (~20 min) — mobility, pogos, tibialis, core only. LAST GYM SESSION OF THE BLOCK. Sauna 20 min.', 'No run · Gym B ~20 min at 40% (last gym) · sauna 20 min', false],
+      ['Tue Oct 13', 'Sharpener. 15 min warm-up → 5 × 3 min at HR 158–165 with 2 min jog → 6 × 20 s strides → 15 min cool-down. Short and snappy — you should finish feeling good, not worked. Sauna 20 min.', '1h05 · ~13 km · reps HR 158–165 · 50 m', true],
+      ['Wed Oct 14', 'Easy rolling 1h15 + 6 × 12 s hill sprints.', '1h15 · ~13 km · HR ≤145 · 200 m', false],
+      ['Thu Oct 15', 'Easy 45 min. Sauna 20 min. Foot routine.', '45 min · ~8 km · HR ≤130 · 50 m', false],
+      ['Fri Oct 16', 'SIGULDA #3 — last long run, and the descent primer. AFTERNOON START so you finish after dark. 45 min Z2 → 5 × 2–3 min controlled descents (short, low volume — this primes, it does not damage) → last 30 min by HEADLAMP including one technical descent. VERIFY THE BATTERY holds at your working brightness. Full race kit, last full fuelling test.', '2h15 · ~19 km · HR ≤145, last 20 min 148–155 · 500 m · 90 g carb/h', true],
+      ['Sat Oct 17', 'Easy 50 min + 6 × 20 s strides.', '50 min · ~9 km · HR ≤130 · 50 m', false],
+      ['Sun Oct 18', 'Easy 40 min. Then check the mandatory kit item by item against the UTMB list, and pack the drop bag and the finish bag.', '40 min · ~7 km · HR ≤128 · 50 m', true],
     ]},
   { num: 'W10', start: '2026-10-19', end: '2026-10-25', phase: 'RACE WEEK', where: 'Riga → Puglia', volume: '2h55 + race',
     note: 'Fly Wednesday, not Thursday. No direct Riga–Bari; bib collection is Friday only; a missed connection is a DNS with zero recovery window.',
     days: [
-      ['Mon Oct 19', 'Easy 45′ + 6 × 20 s strides. FINAL SAUNA 15′. Halve your habitual caffeine from today — do not go to zero', 'Recovery · 45′', false],
-      ['Tue Oct 20', 'Race primer: 15′ WU → 10′ at race effort → 4 × 30 s @Z3 → 15′ CD. Pack the drop bag', 'Priming · 50′ · 148–156', false],
-      ['Wed Oct 21', '✈️ Easy 30′ + 4 × 20 s strides. FLY RIGA → BARI, morning departure. Drive to Castellaneta Marina (~70 km, 50′). Mask on the plane', 'Travel · 30′', true],
-      ['Thu Oct 22', 'LEGS UP ALL DAY. 30′ shakeout on race-adjacent terrain + 4 × 20 s strides. Carb load day 1 ≈8 g/kg (~510 g), low fibre. Confirm the race-morning shuttle time', 'Recovery · 30′', false],
-      ['Fri Oct 23', '20′ shakeout + 3 × 60 s at race effort. BIB COLLECTION — Castellaneta Marina, 09:00–20:00, FRIDAY ONLY. Kit check, briefing. Carb load day 2 ≈9–10 g/kg (~600 g), very low fibre. Off feet from midday. Kit laid out by 19:00, bed 20:30', 'Priming · 20′', true],
-      ['Sat Oct 24', '🏁 RACE — PUGLIA BY UTMB 85 km / 2000 m. Wake 04:45 · breakfast 05:00 · shuttle to Laterza · START 08:30', 'A-RACE · target 10:30–11:15', true],
-      ['Sun Oct 25', '30–45′ walk. Eat everything', 'Recovery', false],
+      ['Mon Oct 19', 'Easy 45 min + 6 × 20 s strides. FINAL SAUNA, 15 min. Gym: mobility only, nothing loaded. HALVE your habitual caffeine from today — do not go to zero, withdrawal costs you sleep and mood for very little benefit.', '45 min · ~8 km · HR ≤135', false],
+      ['Tue Oct 20', 'Race primer. 15 min warm-up → 10 min at race effort (HR 148–156) → 4 × 30 s at HR 158–165 → 15 min cool-down. Legs wake up. Pack the drop bag.', '50 min · ~9 km · HR 148–156', false],
+      ['Wed Oct 21', 'Easy 30 min + 4 × 20 s strides, before you leave. FLY RIGA → BARI, morning departure. Drive to Castellaneta Marina (~70 km, 50 min). Mask on the plane, 3 L fluid with electrolytes across the day.', '30 min · ~5 km · HR ≤128 · travel', true],
+      ['Thu Oct 22', 'LEGS UP ALL DAY. 30 min shakeout on race-adjacent terrain + 4 × 20 s strides. Carb load day 1: ~8 g/kg = ~510 g, low fibre. Confirm the race-morning shuttle departure time.', '30 min · ~5 km · HR ≤128', false],
+      ['Fri Oct 23', '20 min shakeout + 3 × 60 s at race effort. BIB COLLECTION at Castellaneta Marina, 09:00–20:00 — FRIDAY ONLY, there is no Saturday collection for MLT85. Kit check and briefing. Carb load day 2: ~9–10 g/kg = ~600 g, very low fibre and low fat, salt liberally. Off your feet from midday. Kit laid out by 19:00. Bed 20:30.', '20 min · ~4 km · HR ≤130', true],
+      ['Sat Oct 24', 'RACE — PUGLIA BY UTMB, 85 km / 2000 m D+. Wake 04:45 · breakfast 05:00 (150–180 g carb) · shuttle to Laterza · gel + 100 mg caffeine 30 min before · START 08:30. km 0–25 HR 142–148 (criminally easy) · km 25–55 HR 145–153 · km 55–70 RPE 6, ignore HR · km 70–85 lift if anything is left. Headlamp on around 17:50.', '85 km · 2000 m · target 10:30–11:15 · avg HR 143–150 · 90 g carb/h', true],
+      ['Sun Oct 25', 'Walk 30–45 min. Eat everything.', 'No run · walk 30–45 min', false],
     ]},
 ];
 
@@ -596,13 +598,23 @@ if (todayEntry) {
 document.getElementById('weekVol').textContent = week.volume;
 document.getElementById('weekNote').textContent = week.note;
 const tbody = document.querySelector('#weekTable tbody');
-for (const [label, plan, , isKey] of week.days) {
+for (const [label, plan, metrics, isKey] of week.days) {
   const tr = document.createElement('tr');
-  const iso = toISO(label);
-  if (iso === today) tr.classList.add('today-row');
+  if (toISO(label) === today) tr.classList.add('today-row');
   const p = label.split(' ');
-  tr.innerHTML = `<td>${p[0]} ${p[2]}</td><td class="${isKey ? 'key' : ''}"></td>`;
-  tr.lastElementChild.textContent = plan;
+  tr.appendChild(Object.assign(document.createElement('td'), { textContent: `${p[0]} ${p[2]}` }));
+  const td = document.createElement('td');
+  if (isKey) td.className = 'key';
+  const main = document.createElement('div');
+  main.textContent = plan;
+  td.appendChild(main);
+  if (metrics) {
+    const m = document.createElement('div');
+    m.className = 'day-detail';
+    m.textContent = metrics;
+    td.appendChild(m);
+  }
+  tr.appendChild(td);
   tbody.appendChild(tr);
 }
 
@@ -623,12 +635,23 @@ for (const w of WEEKS) {
   const t = document.createElement('table');
   t.className = 'week-table';
   const tb = document.createElement('tbody');
-  for (const [label, plan, , isKey] of w.days) {
+  for (const [label, plan, metrics, isKey] of w.days) {
     const tr = document.createElement('tr');
     if (toISO(label) === today) tr.classList.add('today-row');
     const p = label.split(' ');
-    tr.innerHTML = `<td>${p[0]} ${p[2]}</td><td class="${isKey ? 'key' : ''}"></td>`;
-    tr.lastElementChild.textContent = plan;
+    tr.appendChild(Object.assign(document.createElement('td'), { textContent: `${p[0]} ${p[2]}` }));
+    const td = document.createElement('td');
+    if (isKey) td.className = 'key';
+    const main = document.createElement('div');
+    main.textContent = plan;
+    td.appendChild(main);
+    if (metrics) {
+      const m = document.createElement('div');
+      m.className = 'day-detail';
+      m.textContent = metrics;
+      td.appendChild(m);
+    }
+    tr.appendChild(td);
     tb.appendChild(tr);
   }
   t.appendChild(tb);
